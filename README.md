@@ -1,5 +1,5 @@
 # Large-UniDet
 
-Large Pre-trained Vision Model for Resource-efficient Million-scale Universal Object Detection: A Practice
+Million-scale Object Detection with Large Vision Model
 
 Coming soon~
