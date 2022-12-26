@@ -127,7 +127,7 @@ We build the experimental environment via [docker](https://docs.docker.com/engin
 
 ## Model Zoo
 
-  We provide a zoo of the trained unified detectors as below:
+  We provide a zoo of the trained unified object detectors as below:
   | Model                              | MS COCO | OpenImages | Mapillary | weights |
   |------------------------------------|---------|------------|-----------|---------|
   | Large-UniDet [SEER-RegNet32gf]     | 48.8    | 68.5       | 25.9      |[config](configs/rvc/cascade_rcnn_nasfpn_crpn_32gf_1x_rvc.py) / [weights]()|
