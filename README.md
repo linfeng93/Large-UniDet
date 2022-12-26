@@ -70,8 +70,12 @@ We build the experimental environment via [docker](https://docs.docker.com/engin
   The processed checkpoints are provided [here]() (fetch code: **xxxx**).
   
 - **Label Hierarchy Files**
+
+  Do not need to do anything for this, we provide the label hierarchy files for *HierarchyLoss* in ```$ROOT/label_spaces```.
   
-  Run the scripts to generate the label hierarchy files for *HierarchyLoss*.
+  **Note**:
+  
+  If you want to generate the label hierarchy files by yourself, run the script as below:
   ```
   # generate the label hierarchy files
   cd ./label_spaces
