@@ -16,26 +16,56 @@ Contact: [lin1993@mail.ustc.edu.cn](mailto:lin1993@mail.ustc.edu.cn). Feel free 
 
 Our project works with [mmdetection](https://github.com/open-mmlab/mmdetection) **v2.25.1** or higher. Please refer to [Installation](https://github.com/open-mmlab/mmdetection/blob/master/docs/en/get_started.md/#Installation) for installation instructions.
 
-We build the experimental environment via [docker](https://docs.docker.com/engine). We also provide [DockerImage]() (fetch code: **1024**).
+We build the experimental environment via [docker](https://docs.docker.com/engine). We also provide [DockerImage](https://pan.baidu.com/s/1hgFDnfTz9AqGrCLwFau0tg) (fetch code: **26yc**).
 
 ## Data Preparation
 
 - **Datasets**
 
-  Use the [devkits](https://github.com/ozendelait/rvc_devkit) to prepare three dataset: MS COCO, OpenImages, and Mapillary Vistas.
+  Step 1: Download the [devkits](https://github.com/ozendelait/rvc_devkit) provided by the RVC organizers.
   
-  Link the processed datasets to ```$ROOT/data/rvc```
+  Step 2: Place the devkits folder under ```$ROOT``` as below:
+  ~~~
+  $ROOT/
+    rvc_devkit-master/
+  ~~~
+  
+  Step 3: Use this devkits to prepare three dataset: MS COCO, OpenImages, and Mapillary Vistas.
+  
+  Link the processed datasets to ```$ROOT/data/rvc```, the datasets as below:
+  ~~~
+  $ROOT/
+    data/
+      rvc/
+        coco/
+          annotations/
+          images
+            train2017/
+            val2017/
+            test2017/
+        oid/
+          annotations/
+          train_0/
+          train_1/
+          ...
+          train_f/
+        mvd/
+          annotations/
+          training/
+          validation/
+          testing/
+  ~~~
 
 - **Large Vision Models**
 
-  Employ the [SEER](https://github.com/facebookresearch/vissl/tree/main/projects/SEER) models ([RegNet32gf](https://dl.fbaipublicfiles.com/vissl/model_zoo/seer_regnet32d/seer_regnet32gf_model_iteration244000.torch) and [RegNet256gf](https://dl.fbaipublicfiles.com/vissl/model_zoo/swav_ig1b_cosine_rg256gf_noBNhead_wd1e5_fairstore_bs16_node64_sinkhorn10_proto16k_apex_syncBN64_warmup8k/model_final_checkpoint_phase0.torch)) as the *frozen* backbones. 
+  Step 1: Download the [SEER](https://github.com/facebookresearch/vissl/tree/main/projects/SEER) models ([RegNet32gf](https://dl.fbaipublicfiles.com/vissl/model_zoo/seer_regnet32d/seer_regnet32gf_model_iteration244000.torch) and [RegNet256gf](https://dl.fbaipublicfiles.com/vissl/model_zoo/swav_ig1b_cosine_rg256gf_noBNhead_wd1e5_fairstore_bs16_node64_sinkhorn10_proto16k_apex_syncBN64_warmup8k/model_final_checkpoint_phase0.torch)) and convert them to the *mmdet* format. 
   ```
   # convert the downloaded checkpoints
   seer = torch.load("seer_model_name.torch", map_location="cpu")
   state_dict = {"state_dict": seer["classy_state_dict"]["base_model"]["model"]["trunk"]}
   torch.save(state_dict, FILENAME)
   ```
-  Save the processed checkpoints to ```$ROOT/checkpoints```
+  Step 2: Link the processed checkpoints to ```$ROOT/checkpoints```
   
 - **Label Hierarchy Files**
   
@@ -45,6 +75,17 @@ We build the experimental environment via [docker](https://docs.docker.com/engin
   cd ./label_spaces
   python gen_hierarchy.py
   ```
+  
+- **Evaluation Tools**  
+  
+  Do not need to do anything for this, all the scripts are prepared in our project main folder.
+  
+  **Note**:
+  
+  1. We have downloaded [openimages2coco](https://github.com/bethgelab/openimages2coco) and placed the folder as ```$ROOT/openimages2coco-master```.
+  
+  2. We have simplified the [Tensorflow Object Detection API](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/challenge_evaluation.md#object-detection-track) in ```$ROOT/tools/eval_tools/oid```
+ 
 ## Training
 
 - To train the SEER-RegNet32gf-based Large-UniDet on 8 GPUs, use the following command line
@@ -77,8 +118,12 @@ We build the experimental environment via [docker](https://docs.docker.com/engin
 - To perform evaluations on OpenImages *val* set, run
   ```
   bash tool/dist_test.sh configs/rvc/finetune/cascade_rcnn_nasfpn_crpn_32gf_0.5x_oid.py CHECKPOINT 8 --format-only --eval-options jsonfile_prefix=$ROOT/results/oid
-  python rvc_devkit/common/map_coco_back.py --predictions ...
+  python rvc_devkit-master/common/map_coco_back.py --predictions $ROOT/results/oid.bbox.json --annotations ./data/rvc/oid/annotations/openimages_challenge_2019_val_bbox.json --mapping ./label_spaces/obj_det_mapping_540.csv --mapping_row oid_boxable_leaf --map_to freebase_id --void_id 0 --remove_void --reduce_boxable --output $ROOT/results/remapped_oid.bbox.json
+  python openimages2coco/convert_predictions_custom.py -p $ROOT/results/remapped_oid.bbox.json --subset validation
+  cd tool/eval_tools/oid
+  sh eval.sh $ROOT/results/remapped_oid.bbox.csv $ROOT/results/mAP
   ```
+  See the accuracy in the first row of ```$ROOT/results/mAP```
   
 ## License
 
