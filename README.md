@@ -67,6 +67,8 @@ We build the experimental environment via [docker](https://docs.docker.com/engin
   ```
   Step 2: Link the processed checkpoints to ```$ROOT/checkpoints```
   
+  The processed checkpoints are provided [here]() (fetch code: **xxxx**).
+  
 - **Label Hierarchy Files**
   
   Run the scripts to generate the label hierarchy files for *HierarchyLoss*.
