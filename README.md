@@ -142,8 +142,8 @@ We build the experimental environment via [docker](https://docs.docker.com/engin
   We provide a zoo of the trained unified object detectors as below:
   | Model                              | MS COCO | OpenImages | Mapillary | weights |
   |------------------------------------|---------|------------|-----------|---------|
-  | Large-UniDet [S]     | 48.8    | 68.5       | 25.9      |[config](configs/rvc/cascade_rcnn_nasfpn_crpn_32gf_1x_rvc.py) / [weights]() (fetch code: **xxxx**)|
-  | Large-UniDet [L]    | 51.9    | 69.8       | 27.7      |[config](configs/rvc/cascade_rcnn_nasfpn_crpn_256gf_1x_rvc.py) / [weights]() (fetch code: **xxxx**)|
+  | Large-UniDet [S]     | 48.8    | 68.5       | 25.9      |[config](configs/rvc/cascade_rcnn_nasfpn_crpn_32gf_1x_rvc.py) / [weights](https://pan.baidu.com/s/1lo2cgy0QNGelSrL8AJ-f2w) (fetch code: **jiwq**)|
+  | Large-UniDet [L]    | 51.9    | 69.8       | 27.7      |[config](configs/rvc/cascade_rcnn_nasfpn_crpn_256gf_1x_rvc.py) / [weights](https://pan.baidu.com/s/1lo2cgy0QNGelSrL8AJ-f2w) (fetch code: **jiwq**)|
 
 ## License
 
