@@ -125,9 +125,13 @@ We build the experimental environment via [docker](https://docs.docker.com/engin
   
 - To perform evaluations on OpenImages *val* set, run
   ```
+  # generate the predictions for OpenImages
   bash tool/dist_test.sh configs/rvc/finetune/cascade_rcnn_nasfpn_crpn_32gf_0.5x_oid.py CHECKPOINT 8 --format-only --eval-options jsonfile_prefix=$ROOT/results/oid
+  # remap the unified predictions into the label space of OpenImages
   python rvc_devkit-master/common/map_coco_back.py --predictions $ROOT/results/oid.bbox.json --annotations ./data/rvc/oid/annotations/openimages_challenge_2019_val_bbox.json --mapping ./label_spaces/obj_det_mapping_540.csv --mapping_row oid_boxable_leaf --map_to freebase_id --void_id 0 --remove_void --reduce_boxable --output $ROOT/results/remapped_oid.bbox.json
+  # convert the JSON format to the CSV format
   python openimages2coco/convert_predictions_custom.py -p $ROOT/results/remapped_oid.bbox.json --subset validation
+  # do evaluation
   cd tool/eval_tools/oid
   sh eval.sh $ROOT/results/remapped_oid.bbox.csv $ROOT/results/mAP
   ```
