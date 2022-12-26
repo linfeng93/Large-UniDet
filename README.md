@@ -24,7 +24,7 @@ We build the experimental environment via [docker](https://docs.docker.com/engin
 
   Step 1: Download the [devkits](https://github.com/ozendelait/rvc_devkit) provided by the RVC organizers.
   
-  Step 2: Place the devkits folder under ```$ROOT``` as below:
+  Step 2: Place the devkits folder under our project main folder as below:
   ~~~
   $ROOT/
     rvc_devkit-master/
@@ -84,7 +84,7 @@ We build the experimental environment via [docker](https://docs.docker.com/engin
   
   1. We have downloaded [openimages2coco](https://github.com/bethgelab/openimages2coco) and placed the folder as ```$ROOT/openimages2coco-master```.
   
-  2. We have simplified the [Tensorflow Object Detection API](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/challenge_evaluation.md#object-detection-track) in ```$ROOT/tools/eval_tools/oid```
+  2. We have simplified the [Tensorflow Object Detection API](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/challenge_evaluation.md#object-detection-track) and placed the scripts in ```$ROOT/tools/eval_tools/oid```.
  
 ## Training
 
@@ -124,7 +124,15 @@ We build the experimental environment via [docker](https://docs.docker.com/engin
   sh eval.sh $ROOT/results/remapped_oid.bbox.csv $ROOT/results/mAP
   ```
   See the accuracy in the first row of ```$ROOT/results/mAP```
-  
+
+## Model Zoo
+
+  We provide a zoo of the trained unified detectors as below:
+  | Model                              | MS COCO | OpenImages | Mapillary | weights |
+  |------------------------------------|---------|------------|-----------|---------|
+  | Large-UniDet [SEER-RegNet32gf]     | 48.8    | 68.5       | 25.9      |[config](configs/rvc/cascade_rcnn_nasfpn_crpn_32gf_1x_rvc.py) / [weights]()|
+  | Large-UniDet [SEER-RegNet256gf]    | 51.9    | 69.8       | 27.7      |[config](configs/rvc/cascade_rcnn_nasfpn_crpn_256gf_1x_rvc.py) / [weights]()|
+
 ## License
 
 See the [LICENSE](LICENSE) file for more details.
