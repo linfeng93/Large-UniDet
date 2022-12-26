@@ -69,7 +69,7 @@ We build the experimental environment via [docker](https://docs.docker.com/engin
   
   **Note**:
   
-  The processed checkpoints are provided [here]() (fetch code: **xxxx**).
+  The processed checkpoints are provided [here](https://pan.baidu.com/s/1p24nIFs42eNWp_3qliSzug) (fetch code: **bipe**).
   
 - **Label Hierarchy Files**
 
