@@ -4,8 +4,8 @@ The 2nd place (**IFFF_RVC**) in ECCV 2022 [Robust Vision Challenge (RVC 2022)](h
 
 <p align="center"> <img src='docs/visualization.jpg' align="center" height="225px"> </p>
 
-> [**Million-scale Object Detection with Large Vision Model**](https://arxiv.org/abs/2212.09408),   
-> Feng Lin, Wenze Hu, Yaowei Wang, Yonghong Tian, Guangming Lu, Fanglin Chen, Yong Xu, Xiaoyu Wang
+> [**Universal Object Detection with Large Vision Model**](https://link.springer.com/article/10.1007/s11263-023-01929-0),   
+> Feng Lin, Wenze Hu, Yaowei Wang, Yonghong Tian, Guangming Lu, Fanglin Chen, Yong Xu, Xiaoyu Wang 
 
 Contact: [lin1993@mail.ustc.edu.cn](mailto:lin1993@mail.ustc.edu.cn). Feel free to contact me if you have any question!
 
@@ -153,9 +153,11 @@ See the [LICENSE](LICENSE) file for more details.
 
 If you find this project useful in your research, please cite:
 
-    @article{lin2022million,
-      title={Million-scale Object Detection with Large Vision Model},
+    @article{lin2023universal,
+      title={Universal Object Detection with Large Vision Model},
       author={Lin, Feng and Hu, Wenze and Wang, Yaowei and Tian, Yonghong and Lu, Guangming and Chen, Fanglin and Xu, Yong and Wang, Xiaoyu},
-      journal={arXiv preprint arXiv:2212.09408},
-      year={2022}
+      journal={International Journal of Computer Vision},
+      pages={1--19},
+      year={2023},
+      publisher={Springer}
     }
