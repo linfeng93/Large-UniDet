@@ -4,7 +4,7 @@ The 2nd place (**IFFF_RVC**) in ECCV 2022 [Robust Vision Challenge (RVC 2022)](h
 
 <p align="center"> <img src='docs/visualization.jpg' align="center" height="225px"> </p>
 
-> [**Universal Object Detection with Large Vision Model**](https://link.springer.com/article/10.1007/s11263-023-01929-0),   
+> [**Universal Object Detection with Large Vision Model**](https://arxiv.org/abs/2212.09408),   
 > Feng Lin, Wenze Hu, Yaowei Wang, Yonghong Tian, Guangming Lu, Fanglin Chen, Yong Xu, Xiaoyu Wang 
 
 Contact: [lin1993@mail.ustc.edu.cn](mailto:lin1993@mail.ustc.edu.cn). Feel free to contact me if you have any question!
