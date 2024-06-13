@@ -153,11 +153,13 @@ See the [LICENSE](LICENSE) file for more details.
 
 If you find this project useful in your research, please cite:
 
-    @article{lin2023universal,
+    @article{lin2024universal,
       title={Universal Object Detection with Large Vision Model},
       author={Lin, Feng and Hu, Wenze and Wang, Yaowei and Tian, Yonghong and Lu, Guangming and Chen, Fanglin and Xu, Yong and Wang, Xiaoyu},
       journal={International Journal of Computer Vision},
-      pages={1--19},
-      year={2023},
+      volume={132},
+      number={4},
+      pages={1258--1276},
+      year={2024},
       publisher={Springer}
     }
